@@ -1,18 +1,25 @@
-load debuggingTest.mat
+%loading this file defines imageset, trueclass, and classlabels
 load cifar10testdata.mat
+addpath layers
 
-%sample code to show image and access expected results
-figure; imagesc(imrgb); truesize(gcf,[64 64]);
-for d = 1:length(layerResults)
-    result = layerResults{d};
-    fprintf('layer %d output is size %d x %d x %d\n',...
-        d,size(result,1),size(result,2), size(result,3));
+%find the number of images in the set
+imageSetSize = size(imageset);
+
+%iterate across all found images
+%for imageIndex = 1:imageSetSize(4)
+for imageIndex = 1:1 
+    im = imageset(:,:,:,imageIndex);
+    
+    im = normalize(im)
 end
-
-%find most probable class
-classprobvec = squeeze(layerResults{end});
-[maxprob,maxclass] = max(classprobvec);
-
-%note, classlabels is defined in  ?cifar10testdata.mat?
-fprintf('estimated class is %s with probability %.4f\n',...
-    classlabels{maxclass},maxprob);
+   
+%some sample code to read and display one image from each class
+% for classindex = 1:10
+%     %get indices of all images of that class
+%     inds = find(trueclass==classindex);
+%     %take first one
+%     imrgb = imageset(:,:,:,inds(1));
+%     %display it along with ground truth text label
+%     figure; imagesc(imrgb); truesize(gcf,[64 64]);
+%     title(sprintf('%s',classlabels{classindex}));
+% end
