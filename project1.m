@@ -9,11 +9,14 @@ imageSetSize = size(imageset);
 %iterate across all found images
 %for imageIndex = 1:imageSetSize(4)
 for imageIndex = 1:1 
-    im = imageset(:,:,:,imageIndex);
-    im = double(im);
+    im = double(imageset(:,:,:,imageIndex));
     
-    im = normalize(im)
+    im = normalize(im);
+    size(im)
     
+    im = convolve(im,filterbanks{2},'full');
+    size(im)
+    im = relu(im);
 end
    
 %some sample code to read and display one image from each class
