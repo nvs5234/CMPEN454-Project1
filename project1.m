@@ -1,5 +1,6 @@
 %loading this file defines imageset, trueclass, and classlabels
 load cifar10testdata.mat
+load CNNparameters.mat
 addpath layers
 
 %find the number of images in the set
@@ -9,8 +10,10 @@ imageSetSize = size(imageset);
 %for imageIndex = 1:imageSetSize(4)
 for imageIndex = 1:1 
     im = imageset(:,:,:,imageIndex);
+    im = double(im);
     
     im = normalize(im)
+    
 end
    
 %some sample code to read and display one image from each class
