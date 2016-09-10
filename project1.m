@@ -8,6 +8,7 @@ function project1()
     imageSetSize = size(imageset);
     % comment merge test
     
+    
     %iterate across all found images
     %for imageIndex = 1:imageSetSize(4)
     for imageIndex = 1:1 
