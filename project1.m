@@ -13,10 +13,11 @@ function project1()
         im = double(imageset(:,:,:,imageIndex));
 
         im = normalize(im);
+        
         size(im)
-
-        im = convolve(im,filterbanks{2},'full');
+        im = convolve(im,filterbanks{2}, biasvectors{2});
         size(im)
+        
         im = relu(im);
     end
 
