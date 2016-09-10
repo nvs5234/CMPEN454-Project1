@@ -6,8 +6,7 @@ function project1()
 
     %find the number of images in the set
     imageSetSize = size(imageset);
-    % comment merge test
-    
+    imageSetSize2 = size(imageset);
     
     %iterate across all found images
     %for imageIndex = 1:imageSetSize(4)
