@@ -9,9 +9,6 @@ function output = convolve(in, filterBank, biasVect)
 %         output(:,:,i) = temp;
 %     end
 
-    % initialize output
-    output = zeros(32,32,10);
-
     % find d1
     inSize = size(in);
     d1 = inSize(3);
@@ -19,6 +16,9 @@ function output = convolve(in, filterBank, biasVect)
     % find d2
     filterBankSize = size(filterBank);
     d2 = filterBankSize(4);
+    
+    % initialize output size (for efficiency)
+    output = zeros(32,32,d2);
     
     for l = 1:d2
         filterl = filterBank(:,:,:,l);
