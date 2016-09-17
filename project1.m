@@ -65,8 +65,8 @@ function project1()
         im = maxpool(im);
         debugging(im,16);
         
-        %im = fullconnect(im);
-        %debugging(im,17);
+        im = fullconnect(im,filterbanks{17}, biasvectors{17});
+        debugging(im,17);
         
         %im = softmax(im);
         %debugging(im,18);
