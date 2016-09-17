@@ -68,8 +68,8 @@ function project1()
         im = fullconnect(im,filterbanks{17}, biasvectors{17});
         debugging(im,17);
         
-        %im = softmax(im);
-        %debugging(im,18);
+        im = softmax(im);
+        debugging(im,18);
         
     end
 

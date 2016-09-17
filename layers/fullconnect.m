@@ -1,9 +1,5 @@
 function output = fullconnect(in, filterBank, biasVect)
 
-% convert image and filter to doubles
-in = double(in);
-filterBank = double(filterBank);
-
 % find d1
 inSize = size(in);
 d1 = inSize(3);
