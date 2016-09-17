@@ -6,10 +6,10 @@ output = in;    % output will be same as input but exponentiated and normalized
 alpha = max(in(1,1,:)); % find alpha across all inputs
 inSize = size(in);
 dimension = inSize(3);
+denom = sum(exp(in(1,1,:)-alpha));
 
 for i = 1:dimension
-    numer = exp(in(1,1,i)-alpha);
-    denom = sum(exp(in(1,1,:)-alpha));
+    numer = exp(in(1,1,i)-alpha);    
     output(1,1,i) = numer/denom;
 end     
   
