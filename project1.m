@@ -2,6 +2,7 @@ function project1()
     %loading this file defines imageset, trueclass, and classlabels
     load cifar10testdata.mat
     load CNNparameters.mat
+    load debuggingTest.mat          % need imrgb for testing
     addpath layers
 
     %find the number of images in the set
@@ -10,13 +11,14 @@ function project1()
     %iterate across all found images
     %for imageIndex = 1:imageSetSize(4)
     for imageIndex = 1:1 
-        im = double(imageset(:,:,:,imageIndex));
-
-        im = normalize(im);
+        %im = double(imageset(:,:,:,imageIndex));
+        im = double(imrgb);
         
-        size(im)
+        im = normalize(im);
+        debugging(im,1);
+        
         im = convolve(im,filterbanks{2}, biasvectors{2});
-        size(im)
+        debugging(im,2);
         
         im = relu(im);
     end
