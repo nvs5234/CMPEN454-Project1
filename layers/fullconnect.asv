@@ -1,0 +1,10 @@
+function output = fullconnect(in, filterBank, biasVect)
+
+% find d1
+inSize = size(in);
+d1 = inSize(3);
+
+% find d2
+s
+
+end
