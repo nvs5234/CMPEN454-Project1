@@ -18,7 +18,7 @@ function output = convolve(in, filterBank, biasVect)
     d2 = filterBankSize(4);
     
     % initialize output size (for efficiency)
-    output = zeros(32,32,d2);
+    output = zeros(inSize(1),inSize(1),d2);
     
     for l = 1:d2
         filterl = filterBank(:,:,:,l);
