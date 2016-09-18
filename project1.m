@@ -2,7 +2,6 @@ function project1()
     % Loading this file defines imageset, trueclass, and classlabels
     load cifar10testdata.mat
     load CNNparameters.mat
-    load debuggingTest.mat          % imrgb needed for testing
     addpath layers
 
     % Clear command window for each run
@@ -17,10 +16,11 @@ function project1()
     result = zeros(1,1,10,imageSetSize(4));
     
     % Iterate across all found images
-    for imageIndex = 1:imageSetSize(4)
-    %for imageIndex = 1:1
+    for imageIndex = 1:100
+        c = sprintf('image %d',imageIndex);
+        disp(c);
+        
         im = double(imageset(:,:,:,imageIndex));
-        %im = double(imrgb);
         
         im = normalize(im);
         % debugging(im,1);
@@ -76,21 +76,12 @@ function project1()
         im = softmax(im);
         % debugging(im,18);
         
+        % Generate confusion matrix
         result(:,:,1:10,imageIndex) = im(:,:);
+        A(im == max(im),trueclass(imageIndex)) = 1 + A(im == max(im),trueclass(imageIndex));
     end
     
-    clearvars -except result
-    save('result.mat')
-    display('done')
-    
-    % Some sample code to read and display one image from each class
-    % for classindex = 1:10
-    %     %get indices of all images of that class
-    %     inds = find(trueclass==classindex);
-    %     %take first one
-    %     imrgb = imageset(:,:,:,inds(1));
-    %     %display it along with ground truth text label
-    %     figure; imagesc(imrgb); truesize(gcf,[64 64]);
-    %     title(sprintf('%s',classlabels{classindex}));
-    % end
+    clearvars -except result A
+    save('result.mat');
+    display('Testing complete');
 end
