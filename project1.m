@@ -11,9 +11,14 @@ function project1()
     % Find the number of images in the set
     imageSetSize = size(imageset);
     
+    % Define final confusion matrix
+    A = zeros(10,10);
+    
+    result = zeros(1,1,10,imageSetSize(4));
+    
     % Iterate across all found images
     for imageIndex = 1:imageSetSize(4)
-    %for imageIndex = 1:1 
+    %for imageIndex = 1:1
         im = double(imageset(:,:,:,imageIndex));
         %im = double(imrgb);
         
@@ -71,8 +76,13 @@ function project1()
         im = softmax(im);
         % debugging(im,18);
         
+        result(:,:,1:10,imageIndex) = im(:,:);
     end
-
+    
+    clearvars -except result
+    save('result.mat')
+    display('done')
+    
     % Some sample code to read and display one image from each class
     % for classindex = 1:10
     %     %get indices of all images of that class
