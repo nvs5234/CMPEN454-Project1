@@ -12,64 +12,64 @@ function project1()
     imageSetSize = size(imageset);
     
     % Iterate across all found images
-    %for imageIndex = 1:imageSetSize(4)
-    for imageIndex = 1:1 
-        %im = double(imageset(:,:,:,imageIndex));
-        im = double(imrgb);
+    for imageIndex = 1:imageSetSize(4)
+    %for imageIndex = 1:1 
+        im = double(imageset(:,:,:,imageIndex));
+        %im = double(imrgb);
         
         im = normalize(im);
-        debugging(im,1);
+        % debugging(im,1);
         
         im = convolve(im,filterbanks{2}, biasvectors{2});
-        debugging(im,2);
+        % debugging(im,2);
         
         im = relu(im);
-        debugging(im,3);
+        % debugging(im,3);
         
         im = convolve(im,filterbanks{4}, biasvectors{4});
-        debugging(im,4);
+        % debugging(im,4);
         
         im = relu(im);
-        debugging(im,5);
+        % debugging(im,5);
         
         im = maxpool(im);
-        debugging(im,6);
+        % debugging(im,6);
         
         im = convolve(im,filterbanks{7}, biasvectors{7});
-        debugging(im,7);
+        % debugging(im,7);
         
         im = relu(im);
-        debugging(im,8);
+        % debugging(im,8);
         
         im = convolve(im,filterbanks{9}, biasvectors{9});
-        debugging(im,9);
+        % debugging(im,9);
         
         im = relu(im);
-        debugging(im,10);
+        % debugging(im,10);
         
         im = maxpool(im);
-        debugging(im,11);
+        % debugging(im,11);
         
         im = convolve(im,filterbanks{12}, biasvectors{12});
-        debugging(im,12);
+        % debugging(im,12);
         
         im = relu(im);
-        debugging(im,13);
+        % debugging(im,13);
         
         im = convolve(im,filterbanks{14}, biasvectors{14});
-        debugging(im,14);
+        % debugging(im,14);
         
         im = relu(im);
-        debugging(im,15);
+        % debugging(im,15);
         
         im = maxpool(im);
-        debugging(im,16);
+        % debugging(im,16);
         
         im = fullconnect(im,filterbanks{17}, biasvectors{17});
-        debugging(im,17);
+        % debugging(im,17);
         
         im = softmax(im);
-        debugging(im,18);
+        % debugging(im,18);
         
     end
 
