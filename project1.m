@@ -3,6 +3,7 @@ function project1()
     load cifar10testdata.mat
     load CNNparameters.mat
     addpath layers
+    addpath evaluations
 
     % Clear command window for each run
     clc
@@ -10,13 +11,10 @@ function project1()
     % Find the number of images in the set
     imageSetSize = size(imageset);
     
-    % Define final confusion matrix
-    A = zeros(10,10);
-    
     result = zeros(1,1,10,imageSetSize(4));
     
     % Iterate across all found images
-    for imageIndex = 1:100
+    for imageIndex = 1:imageSetSize(4)
         c = sprintf('image %d',imageIndex);
         disp(c);
         
@@ -76,12 +74,14 @@ function project1()
         im = softmax(im);
         % debugging(im,18);
         
-        % Generate confusion matrix
-        result(:,:,1:10,imageIndex) = im(:,:);
-        A(im == max(im),trueclass(imageIndex)) = 1 + A(im == max(im),trueclass(imageIndex));
+        % Generate result
+        result(:,:,1:10,imageIndex) = im(:,:);    
     end
     
-    clearvars -except result A
+    A = confusionMx(result,imageSetSize(4));
+    plot = kPlot(result,imageSetSize(4));
+    
+    clearvars -except result A plot
     save('result.mat');
     display('Testing complete');
 end
