@@ -1,9 +1,9 @@
 function output = demo1()
     % Loading this file defines imageset, trueclass, and classlabels
-    load    ..\CNNparameters.mat
-    load    ..\cifar10testdata.mat
-    addpath ..\layers
-    addpath ..\evaluations
+    load    ../CNNparameters.mat
+    load    ../cifar10testdata.mat
+    addpath ../layers
+    addpath ../evaluations
 
     % Clear command window for each run
     clc
