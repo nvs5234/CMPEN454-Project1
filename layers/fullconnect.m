@@ -8,6 +8,8 @@ d1 = inSize(3);
 filterBankSize = size(filterBank);
 d2 = filterBankSize(4);
 
+output = zeros(1,1,10);
+
 % apply filter of same size to each dimension of image
 for i = 1:d2
         sum = 0;
