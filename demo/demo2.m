@@ -9,7 +9,7 @@ function output = demo1()
     clc
     
     % airplane image
-    im = double(imread('airplane.jpg'));
+    im = double(imread('boat.jpg'));
 
     %start the process
     
